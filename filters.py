@@ -71,11 +71,11 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Get a representation that has all information about the object."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
 class DateFilter(AttributeFilter):
-
     """An `DateFilter` represent date filtering for close approach to reference value."""
 
     @classmethod
@@ -89,7 +89,6 @@ class DateFilter(AttributeFilter):
 
 
 class DistanceFilter(AttributeFilter):
-
     """An `DistanceFilter` represent distance filtering for close approach to reference value."""
 
     @classmethod
@@ -103,7 +102,6 @@ class DistanceFilter(AttributeFilter):
 
 
 class VelocityFilter(AttributeFilter):
-
     """An `VelocityFilter` represent velocity filtering for close approach to reference value."""
 
     @classmethod
@@ -117,7 +115,6 @@ class VelocityFilter(AttributeFilter):
 
 
 class DiameterFilter(AttributeFilter):
-
     """An `DiameterFilter` represent diameter filtering for close approach to reference value."""
 
     @classmethod
@@ -131,7 +128,6 @@ class DiameterFilter(AttributeFilter):
 
 
 class HazardousFilter(AttributeFilter):
-
     """An `HazardousFilter` represent hazardous filtering for close approach to reference value."""
 
     @classmethod
@@ -178,7 +174,6 @@ def create_filters(date=None, start_date=None, end_date=None,
     :param hazardous: Whether the NEO of a matching `CloseApproach` is potentially hazardous.
     :return: A collection of filters for use with `query`.
     """
-
     filters = []
     if date:
         filters.append(DateFilter(operator.eq, date))

@@ -38,7 +38,6 @@ class NearEarthObject:
 
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
-
         self.designation = info["pdes"]
         self.name = info["name"] or None
         self.diameter = float(
@@ -55,7 +54,6 @@ class NearEarthObject:
 
     def __str__(self):
         """Return `str(self)`."""
-
         hazardous = " " if self.hazardous else " not "
         return f"NEO {self.fullname} has a diameter of {self.diameter:.3f} km and is{hazardous}potentially hazardous."
 
@@ -66,6 +64,7 @@ class NearEarthObject:
             f"diameter={self.diameter:.3f}, hazardous={self.hazardous!r})")
 
     def serialize(self):
+        """Serialize object to dictionary."""
         return {
             'designation': self.designation,
             'name': self.name or "",
@@ -92,7 +91,6 @@ class CloseApproach:
 
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
-
         self._designation = info["des"]
         # TODO: Use the cd_to_datetime function for this attribute.
         self.time = cd_to_datetime(info["cd"])
@@ -115,12 +113,10 @@ class CloseApproach:
         formatted string that can be used in human-readable representations and
         in serialization to CSV and JSON files.
         """
-
         return f"{datetime_to_str(self.time)}"
 
     def __str__(self):
         """Return `str(self)`."""
-
         return f"At {self.time_str}, '{self.neo.fullname}' approaches Earth at a distance of {self.distance:.2f} au and a veolocity of {self.velocity:.2f} km/s."
 
     def __repr__(self):
@@ -130,6 +126,7 @@ class CloseApproach:
             f"velocity={self.velocity:.2f}, neo={self.neo!r})")
 
     def serialize(self):
+        """Serialize object to dictionary."""
         return {
             'datetime_utc': self.time_str,
             'distance_au': self.distance,
