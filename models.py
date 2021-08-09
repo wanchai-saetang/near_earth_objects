@@ -92,7 +92,6 @@ class CloseApproach:
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
         self._designation = info["des"]
-        # TODO: Use the cd_to_datetime function for this attribute.
         self.time = cd_to_datetime(info["cd"])
         self.distance = float(info["dist"])
         self.velocity = float(info["v_rel"])
